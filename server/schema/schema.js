@@ -1,10 +1,30 @@
-const graphql = require('graphql');
+const _ = require('lodash');  // <-- require lodash here
 const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
   GraphQLSchema
-} = graphql;
+} = require('graphql');
+
+// Dummy tasks data array
+const tasks = [
+  {
+    id: '1',
+    title: 'Create your first webpage',
+    weight: 1,
+    description: `Create your first HTML file 0-index.html with:
+-Add the doctype on the first line (without any comment)
+-After the doctype, open and close a html tag
+Open your file in your browser (the page should be blank)`
+  },
+  {
+    id: '2',
+    title: 'Structure your webpage',
+    weight: 1,
+    description: `Copy the content of 0-index.html into 1-index.html
+Create the head and body sections inside the html tag, create the head and body tags (empty) in this order`
+  }
+];
 
 // Define the TaskType
 const TaskType = new GraphQLObjectType({
@@ -17,28 +37,21 @@ const TaskType = new GraphQLObjectType({
   }
 });
 
-// Define the RootQuery with args and resolve function
+// Define RootQuery
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     task: {
       type: TaskType,
-      args: { id: { type: GraphQLString } }, // ✅ added args
+      args: { id: { type: GraphQLString } },
       resolve(parent, args) {
-        // Placeholder logic: always returns the same task
-        // You could later replace this with: Task.findById(args.id)
-        return {
-          id: args.id,
-          title: 'First Task',
-          weight: 3,
-          description: 'This is your first task'
-        };
+        // Use lodash to find the task by id
+        return _.find(tasks, { id: args.id });
       }
     }
   }
 });
 
-// Export the schema
 module.exports = new GraphQLSchema({
   query: RootQuery
 });
