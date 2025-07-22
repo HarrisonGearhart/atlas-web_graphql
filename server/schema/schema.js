@@ -6,7 +6,7 @@ const {
   GraphQLSchema
 } = graphql;
 
-// Create the TaskType
+// Define the TaskType
 const TaskType = new GraphQLObjectType({
   name: 'Task',
   fields: {
@@ -17,16 +17,18 @@ const TaskType = new GraphQLObjectType({
   }
 });
 
-// Create the RootQuery
+// Define the RootQuery with args and resolve function
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     task: {
       type: TaskType,
-      resolve() {
-        // Return sample static data
+      args: { id: { type: GraphQLString } }, // ✅ added args
+      resolve(parent, args) {
+        // Placeholder logic: always returns the same task
+        // You could later replace this with: Task.findById(args.id)
         return {
-          id: '1',
+          id: args.id,
           title: 'First Task',
           weight: 3,
           description: 'This is your first task'
