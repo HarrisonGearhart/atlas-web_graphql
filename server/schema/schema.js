@@ -80,24 +80,37 @@ const ProjectType = new GraphQLObjectType({
 
 // RootQuery
 const RootQuery = new GraphQLObjectType({
-  name: 'RootQueryType',
-  fields: {
-    task: {
-      type: TaskType,
-      args: { id: { type: GraphQLID } },
-      resolve(parent, args) {
-        return _.find(tasks, { id: args.id });
-      }
-    },
-    project: {
-      type: ProjectType,
-      args: { id: { type: GraphQLID } },
-      resolve(parent, args) {
-        return _.find(projects, { id: args.id });
+    name: 'RootQueryType',
+    fields: {
+      task: {
+        type: TaskType,
+        args: { id: { type: GraphQLID } },
+        resolve(parent, args) {
+          return _.find(tasks, { id: args.id });
+        }
+      },
+      project: {
+        type: ProjectType,
+        args: { id: { type: GraphQLID } },
+        resolve(parent, args) {
+          return _.find(projects, { id: args.id });
+        }
+      },
+      tasks: {
+        type: new GraphQLList(TaskType),
+        resolve() {
+          return tasks;
+        }
+      },
+      projects: {
+        type: new GraphQLList(ProjectType),
+        resolve() {
+          return projects;
+        }
       }
     }
-  }
-});
+  });
+  
 
 module.exports = new GraphQLSchema({
   query: RootQuery
