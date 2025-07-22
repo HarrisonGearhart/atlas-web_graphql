@@ -78,7 +78,7 @@ const ProjectType = new GraphQLObjectType({
   })
 });
 
-// RootQuery
+// RootQuery Section
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
