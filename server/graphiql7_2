@@ -1,9 +1,9 @@
 mutation {
   addTask(
-    title: "Learn Flexbox"
-    weight: 1
-    description: "Understand CSS Flexbox properties and layout."
-    projectId: "1"
+    title: "CSS Grid Layout",
+    weight: 1,
+    description: "Implement a layout using CSS Grid",
+    projectId: "60f7b1a5e6b9a80015f8d7e1"  # Use actual project ID
   ) {
     id
     title

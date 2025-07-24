@@ -1,8 +1,8 @@
 mutation {
   addProject(
-    title: "New Web Project"
-    weight: 2
-    description: "This project covers advanced CSS and JavaScript techniques."
+    title: "Advanced CSS",
+    weight: 2,
+    description: "Learn advanced CSS techniques"
   ) {
     id
     title
