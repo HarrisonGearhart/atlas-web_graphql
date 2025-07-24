@@ -1,0 +1,17 @@
+mutation {
+  addTask(
+    title: "Learn Flexbox"
+    weight: 1
+    description: "Understand CSS Flexbox properties and layout."
+    projectId: "1"
+  ) {
+    id
+    title
+    weight
+    description
+    project {
+      id
+      title
+    }
+  }
+}
