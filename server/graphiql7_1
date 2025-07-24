@@ -1,8 +1,8 @@
 mutation {
   addProject(
-    title: "Advanced CSS",
-    weight: 2,
-    description: "Learn advanced CSS techniques"
+    title: "Bootstrap",
+    weight: 1,
+    description: "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end development."
   ) {
     id
     title

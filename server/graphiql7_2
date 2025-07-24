@@ -1,9 +1,8 @@
 mutation {
   addTask(
-    title: "CSS Grid Layout",
-    weight: 1,
-    description: "Implement a layout using CSS Grid",
-    projectId: "60f7b1a5e6b9a80015f8d7e1"  # Use actual project ID
+    title: "Reboot styling",
+    weight: 2,
+    description: "Add Bootstrap to reset the CSS styling"
   ) {
     id
     title
